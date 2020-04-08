@@ -8,11 +8,10 @@ namespace Fitness.BL.Model
 {
     /// <summary>
     /// 
-    /// Класс который описывает Пользователя
+    /// Класс который описывает Пол.
     /// 
     /// </summary>
-    class User
+    class Gender
     {
-
     }
 }
