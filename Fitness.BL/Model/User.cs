@@ -11,7 +11,8 @@ namespace Fitness.BL.Model
     /// Класс который описывает Пользователя.
     /// 
     /// </summary>
-    class User
+    [Serializable]
+    public class User
     {
         #region ---===   Property   ===---
         
@@ -20,21 +21,21 @@ namespace Fitness.BL.Model
         /// Имя пользователя.
         /// 
         /// </summary>
-        public string Name { get; }
+        public string Name { get;}
         
         /// <summary>
         /// 
         /// Пол пользователя.
         /// 
         /// </summary>
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// 
         /// Дата рождения пользователя.
         /// 
         /// </summary>
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; }
 
         /// <summary>
         /// 
@@ -50,9 +51,41 @@ namespace Fitness.BL.Model
         /// </summary>
         public double Height { get; set; }
 
+        /// <summary>
+        /// 
+        /// Свойство для расчета полного возраста
+        /// 
+        /// </summary>
+        public int Age
+        {
+            get
+            {
+                DateTime nowDate = DateTime.Today;
+
+                int age = nowDate.Year - BirthDate.Year;
+
+                if (BirthDate > nowDate.AddYears(-age))
+                {
+                    age--;
+                }
+
+                return age;
+            }
+        }
+
         #endregion
 
         #region ---===   Ctor   ===---
+
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым.", nameof(name));
+            }
+
+            Name = name;
+        }
 
         /// <summary>
         /// 
@@ -146,7 +179,7 @@ namespace Fitness.BL.Model
 
         public override string ToString()
         {
-            return Name;
+            return Name + " " + Age;
         }
 
         #endregion

@@ -11,7 +11,8 @@ namespace Fitness.BL.Model
     /// Класс который описывает Пол.
     /// 
     /// </summary>
-    class Gender
+    [Serializable]
+    public class Gender
     {
         #region ---===   Property   ===---
 
