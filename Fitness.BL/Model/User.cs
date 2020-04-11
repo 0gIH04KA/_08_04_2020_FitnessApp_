@@ -15,13 +15,13 @@ namespace Fitness.BL.Model
     public class User
     {
         #region ---===   Property   ===---
-        
+
         /// <summary>
         /// 
         /// Имя пользователя.
         /// 
         /// </summary>
-        public string Name { get;}
+        public string Name { get; set; }
         
         /// <summary>
         /// 

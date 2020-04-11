@@ -14,8 +14,14 @@ namespace Fitness.BL.Controller
     /// Контроллер пользователя
     /// 
     /// </summary>
-    public class UserController
+    public class UserController : ControllerBase
     {
+        #region ---===   Constant   ===---
+
+        private const string USER_FILE_NAME = "user.dat";
+
+        #endregion
+
         #region ---===   Property   ===---
 
         /// <summary>
@@ -30,7 +36,7 @@ namespace Fitness.BL.Controller
         /// 
         /// 
         /// </summary>
-        public User CurentUser { get; }
+        public User CurrentUser { get; }
 
         public bool IsNewUser { get; } = false;
 
@@ -58,16 +64,59 @@ namespace Fitness.BL.Controller
 
             Users = GetUsertsData();
 
-            CurentUser = Users.SingleOrDefault(u => u.Name == userName);
+            CurrentUser = Users.SingleOrDefault(u => u.Name == userName);
 
-            if (CurentUser == null)
+            if (CurrentUser == null)
             {
-                CurentUser = new User(userName);
-                Users.Add(CurentUser);
+                CurrentUser = new User(userName);
+                Users.Add(CurrentUser);
                 IsNewUser = true;
 
                 Save();
             }
+        }
+
+        #endregion
+
+        #region ---===   Public Method   ===---
+
+        /// <summary>
+        /// 
+        /// Создание нового пользователя
+        /// 
+        /// </summary>
+        /// 
+        /// <param name="genderName">
+        /// 
+        /// Пол
+        /// 
+        /// </param>
+        /// 
+        /// <param name="birthDate">
+        /// 
+        /// Дата рождения
+        /// 
+        /// </param>
+        /// 
+        /// <param name="weight">
+        /// 
+        /// Вес 
+        /// 
+        /// </param>
+        /// 
+        /// <param name="height">
+        /// 
+        /// Рост
+        /// 
+        /// </param>
+        public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
+        {
+            CurrentUser.Gender = new Gender(genderName);
+            CurrentUser.BirthDate = birthDate;
+            CurrentUser.Weight = weight;
+            CurrentUser.Height = height;
+
+            Save();
         }
 
         #endregion
@@ -81,55 +130,20 @@ namespace Fitness.BL.Controller
         /// </summary>
         private List<User> GetUsertsData()
         {
-            var fomatter = new BinaryFormatter();
-
-            using (var fileStream = new FileStream("user.dat", FileMode.OpenOrCreate))
-            {
-                if (fomatter.Deserialize(fileStream) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-            }
+            return base.Load<List<User>>(USER_FILE_NAME) ?? new List<User>();
         }
 
         /// <summary>
         /// 
-        /// Сохранить пользователя приложения в файл
+        /// Сохранение в файл
         /// 
         /// </summary>
         private void Save()
         {
-            var fomatter = new BinaryFormatter();
-
-            using (var fileStream = new FileStream("user.dat", FileMode.OpenOrCreate))
-            {
-                fomatter.Serialize(fileStream, Users);
-            }
+            base.Save(USER_FILE_NAME, Users);
         }
 
         #endregion
-
-        #region ---===   Public Method   ===---
-
-
-
-        public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
-        {
-            CurentUser.Gender = new Gender(genderName);
-            CurentUser.BirthDate = birthDate;
-            CurentUser.Weight = weight;
-            CurentUser.Height = height;
-
-            Save();
-        }
-
-        #endregion
-
-
 
     }
 }

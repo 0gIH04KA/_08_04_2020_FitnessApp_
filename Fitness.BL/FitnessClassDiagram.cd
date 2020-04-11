@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fitness.BL.Model.User">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAACEAGAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Gender" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Fitness.BL.Model.Gender" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEACAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Gender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fitness.BL.Controller.UserController">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="Fitness.BL.Controller.ControllerBase" FixedFromPoint="true">
+      <Path>
+        <Point X="7" Y="10.47" />
+        <Point X="5" Y="10.47" />
+        <Point X="5" Y="6.578" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Users" Type="Fitness.BL.Model.User">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.133" Y="-0.775" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAKAAAIAAAACAAAQAAAAAAAAAAABAAEAAAAAAAAA=</HashCode>
+      <FileName>Controller\UserController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentUser" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Users" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Fitness.BL.Model.Food">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAgAgAEAAAAABQAAAAAABAAAAAAACAAAAA=</HashCode>
+      <FileName>Model\Food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fitness.BL.Model.Exercise">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAg=</HashCode>
+      <FileName>Model\Exercise.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Activity" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Fitness.BL.Model.Eating">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgIBEAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Eating.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Fitness.BL.Model.Activity" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fitness.BL.Controller.ExerciseController">
+    <Position X="12.25" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="Fitness.BL.Controller.ControllerBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="10.47" />
+        <Point X="12.938" Y="10.47" />
+        <Point X="12.938" Y="5.011" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Activities" Type="Fitness.BL.Model.Activity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.125" Y="2.75" />
+        <Point X="13.125" Y="2" />
+        <Point X="12.5" Y="2" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAIAAAAAABAAAAAEAABAAAAAAAICAAAAAAIAAAAA=</HashCode>
+      <FileName>Controller\ExerciseController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Exercises" />
+      <Field Name="Activities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Fitness.BL.Controller.EatingController">
+    <Position X="7" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAEIAAAAIAAAIAAAAAAAAAAAAAgAAAAAAAACAAAQA=</HashCode>
+      <FileName>Controller\EatingContoller.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="user" />
+      <Property Name="Eating" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Foods" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Fitness.BL.Controller.ControllerBase">
+    <Position X="7" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Controller\ControllerBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_saver" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="Fitness.BL.Controller.Interface.IDataSaver">
+    <Position X="7" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\Interface\IDataSaver.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
